@@ -2,7 +2,7 @@
 var audio = new Audio("./sounds/crash.mp3");
 
 // Function to check the key values
-function myCase(val) {
+function makeSound(val) {
   switch (val) {
     case "w":
       var audio = new Audio("./sounds/tom-1.mp3");
@@ -40,11 +40,21 @@ function myCase(val) {
 for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
   document.querySelectorAll("button")[i].addEventListener("click", function() {
     var buttonInnerHTML = this.innerHTML;
-    myCase(buttonInnerHTML);
+    makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
   });
 }
 
 //fuction to produce sound on key board event
 document.addEventListener("keypress", event => {
-  myCase(event.key);
+  makeSound(event.key);
+  buttonAnimation(event.key);
 });
+// ON click animation added
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100);
+}
