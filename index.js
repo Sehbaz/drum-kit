@@ -50,7 +50,7 @@ document.addEventListener("keypress", event => {
   makeSound(event.key);
   buttonAnimation(event.key);
 });
-// ON click animation added
+// ON click animation added on button
 function buttonAnimation(currentKey) {
   var activeButton = document.querySelector("." + currentKey);
   activeButton.classList.add("pressed");
